@@ -16,9 +16,17 @@ import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 if getattr(sys, 'frozen', False):
+    # Running as EXE:
+    # BASE_DIR = Temporary folder (Where code/templates live)
     BASE_DIR = Path(sys._MEIPASS)
+    
+    # DATABASE_DIR = The folder where the .exe is located (Permanent)
+    # This ensures the database file is not deleted when the app closes.
+    DATABASE_DIR = Path(sys.executable).parent
 else:
+    # Running as Script:
     BASE_DIR = Path(__file__).resolve().parent.parent
+    DATABASE_DIR = BASE_DIR
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
@@ -85,7 +93,7 @@ WSGI_APPLICATION = 'e_shop.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': DATABASE_DIR / 'db.sqlite3',
     }
 }
 
