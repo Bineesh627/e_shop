@@ -185,4 +185,4 @@ e_shop/
 
 ## 📜 License
 
-This project was created as part of a **Master of Computer Applications (MCA)** submission for **Uttaranchal University**.
+This project was created as part of a **Master of Computer Applications (MCA)** submission.
